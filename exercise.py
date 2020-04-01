@@ -8,19 +8,26 @@ from collections import defaultdict
 from datetime import datetime
 
 
-# LOCAL APP BUNDLE 
-starttime=time.time()
-frozen = False
-if getattr(sys, 'frozen', False):   # running in a bundle
-        frozen = True
-        bundle_dir = sys._MEIPASS
-else:                               # running in normal Python environment
-        bundle_dir = os.path.dirname(os.path.abspath(__file__))  
-print( 'Frozen: ',frozen)
-print( 'Bundle dir:', bundle_dir )
-print( 'sys.argv[0] ', sys.argv[0] )
-print( 'sys.executable ', sys.executable )
-print( 'os.getcwd ', os.getcwd() )
+# CHECK ENV
+if getattr(sys, 'frozen', False):
+    # IN BUNDLE
+    bundle_dir = sys._MEIPASS
+else:
+    # IN PYTHON
+    bundle_dir = os.path.dirname(os.path.abspath(__file__))
+print( '                 : ')
+print( '    bundle dir is: ', bundle_dir )
+print( '   sys.argv[0] is: ', sys.argv[0] )
+print( 'sys.executable is: ', sys.executable )
+print( '     os.getcwd is: ', os.getcwd() )
+
+sound_dir = bundle_dir+'/sounds/'
+
+# PLAY SOUND
+def playSound( sound_in ):
+    sound_path = sound_dir +sound_in
+    print(' Playing Sound Path: ',sound_path )
+    subprocess.call(["afplay", sound_path])
 
 
 # VARS 
@@ -29,12 +36,7 @@ start_time=time.time()
 total_points=0
 played_hash = defaultdict(int)
 mypath='sounds'
-sounds_array  =[f for f in listdir(mypath) if isfile(join(mypath, f))]
-
-# PLAY SOUND 
-def playSound( sound_in ):
-    sound_path = 'sounds/'+sound_in
-    subprocess.call(["afplay", sound_path])
+sounds_array  =[f for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
 
 
 # EVENT LOOP 
