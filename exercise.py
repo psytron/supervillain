@@ -39,6 +39,18 @@ mypath='sounds'
 sounds_array  =[f for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
 
 
+
+
+import sys
+from PySide2.QtWidgets import QApplication, QLabel
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    label = QLabel("SUPERVILLAIN")
+    label.show()
+    #sys.exit(app.exec_())
+
+
 # EVENT LOOP 
 while True:
     random_delay = random.randint(180,320)
@@ -79,3 +91,17 @@ while True:
 
 
 
+
+
+# MAC OS VOICES:
+
+# Play Sound File: 
+# afplay /System/Library/Sounds/Funk.aiff
+
+# Speak with Voice 
+# say done
+# There are more sound effect files in /System/Library/PrivateFrameworks/ScreenReader.framework/Versions/A/Resources/Sounds/.
+
+# say -v ? (in Yosemite) to get a list of voices installed 
+# script to say what you want in every available voice: 
+# for i in $(say -v \? | awk '{print $1;}'); do echo $i; say -v $i "Build terminated\!"; done 
