@@ -44,6 +44,8 @@ played_hash = defaultdict(int)
 sounds_array  =[ {'type':'sound','dat':f} for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
 instructions_array = [  
     {'type':'instruct' , 'dat':'Cherrie Pickers.. Do it now. '},
+    {'type':'instruct' , 'dat':'Regular Lunges. It looks easy, but you can really feel it.'},
+    {'type':'instruct' , 'dat':'Arnold Schwartzenegger. Arnold Shwartzenegger yo. Do it.'},
     {'type':'instruct' , 'dat':'Backbend backwards bridge. Make it happen strength for your back.'},
     {'type':'instruct' , 'dat':'Calf Raises 15. Do 15 Calf Raises.'},
     {'type':'instruct' , 'dat':'Sit-ups. Basic Bitch Sit-ups. Do it. Strong Abs.'},
