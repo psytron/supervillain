@@ -6,6 +6,12 @@ from colorama import Fore, Back, Style
 from os.path import isfile, join
 from collections import defaultdict
 from datetime import datetime
+import os
+
+
+#     SuperVillain 
+#     STRENGTH: 
+#     STRETCHES: 
 
 
 # CHECK ENV
@@ -23,41 +29,53 @@ print( '     os.getcwd is: ', os.getcwd() )
 
 sound_dir = bundle_dir+'/sounds/'
 
+
 # PLAY SOUND
 def playSound( sound_in ):
     sound_path = sound_dir +sound_in
-    print(' Playing Sound Path: ',sound_path )
     subprocess.call(["afplay", sound_path])
 
 
-# VARS 
+
+
+# PREPARE ARRAY OF SOUNDS AND ROBO INSTRUCTIONS
 start_date=datetime.now()
 start_time=time.time()
 total_points=0
 played_hash = defaultdict(int)
 mypath='sounds'
-sounds_array  =[f for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
+sounds_array  =[ {'type':'sound','dat':f} for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
+instructions_array = [  
+    {'type':'instruct' , 'dat':'Cherrie Pickers.. Do it now. '},
+    {'type':'instruct' , 'dat':'Backbend backwards bridge. Make it happen strength for your back.'},
+    {'type':'instruct' , 'dat':'Calf Raises 15. Do 15 Calf Raises.'},
+    {'type':'instruct' , 'dat':'Sit-ups. Basic Bitch Sit-ups. Do it. Strong Abs.'},
+    {'type':'instruct' , 'dat':'Side Leg Raises. Buns Effect. Iron Buns. '},
+    {'type':'instruct' , 'dat':'Leg Raises. Laying down flat raise legs. Do it slowly, super slowly. '},
+    {'type':'instruct' , 'dat':"Jumping Jacks. You son of a bitch.  I'm in. "},
+    {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Yeeeeeah Fuck Yeah yeah bomb diggity. '},
+    {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Ooh We. '}
+]
+sounds_array = sounds_array + instructions_array
 
 
 
-
-import sys
-from PySide2.QtWidgets import QApplication, QLabel
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    label = QLabel("SUPERVILLAIN")
-    label.show()
-    #sys.exit(app.exec_())
 
 
 # EVENT LOOP 
 while True:
-    random_delay = random.randint(180,320)
+    random_delay = random.randint(1,2)
     random_sound = random.randint(0, len(sounds_array)-1)
-    curr_sound = sounds_array[random_sound]
-    playSound( curr_sound )
-    played_hash[ curr_sound ]+=1000
+    obj = sounds_array[random_sound]
+    
+    
+    if obj['type']=='sound':
+        playSound( obj['dat'] )
+    else:
+        os.system('say '+ obj['dat']  )
+
+
+    played_hash[ obj['dat'] ]+=1000
     total_points=total_points+1000
     
     for k,v in played_hash.items():
