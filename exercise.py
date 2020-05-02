@@ -52,7 +52,7 @@ instructions_array = [
     {'type':'instruct' , 'dat':'Sit-ups. Basic Bitch Sit-ups. Do it. Strong Abs.'},
     {'type':'instruct' , 'dat':'Side Leg Raises. Buns Effect. Iron Buns. '},
     {'type':'instruct' , 'dat':'Leg Raises. Laying down flat raise legs. Do it slowly, super slowly. '},
-    {'type':'instruct' , 'dat':"Jumping Jacks. You son of a bitch.  I'm in. "},
+    {'type':'instruct' , 'dat':"Jumping Jacks. You son of a bitch.  I\'m in. "},
     {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Yeeeeeah Fuck Yeah yeah bomb diggity. '},
     {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Ooh We. '}
 ]
