@@ -64,7 +64,7 @@ sounds_array = sounds_array + instructions_array
 
 # EVENT LOOP 
 while True:
-    random_delay = random.randint(1,2)
+    random_delay = random.randint(190,300)
     random_sound = random.randint(0, len(sounds_array)-1)
     obj = sounds_array[random_sound]
     
