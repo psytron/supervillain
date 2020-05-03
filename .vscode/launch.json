@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "SOUND RIDE ",
+            "name": "SuperVillain Base ",
             "type": "python",
             "request": "launch",
             "program": "exercise.py",

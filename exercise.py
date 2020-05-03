@@ -18,6 +18,7 @@ if getattr(sys, 'frozen', False):
     bundle_dir = sys._MEIPASS # IN BUNDLE
 else:
     bundle_dir = os.path.dirname(os.path.abspath(__file__)) # IN PYTHON
+    bundle_dir_alt = sys.argv[0]
 print( '                 : ')
 print( '    bundle dir is: ', bundle_dir )
 print( '   sys.argv[0] is: ', sys.argv[0] )

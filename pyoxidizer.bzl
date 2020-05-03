@@ -100,7 +100,7 @@ def make_exe(dist):
 
     # Invoke `pip install` using a requirements file and add the collected resources
     # to our binary.
-    #exe.add_in_memory_python_resources(dist.pip_install(["-r", "requirements.txt"]))
+    exe.add_in_memory_python_resources(dist.pip_install(["-r", "requirements.txt"]))
 
     
 
@@ -114,7 +114,7 @@ def make_exe(dist):
 
     # Discover Python files from a virtualenv and add them to our embedded
     # context.
-    #exe.add_in_memory_python_resources(dist.read_virtualenv(path="/path/to/venv"))
+    #exe.add_in_memory_python_resources(dist.read_virtualenv(path="venv"))
 
     # Filter all resources collected so far through a filter of names
     # in a file.
