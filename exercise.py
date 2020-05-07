@@ -54,7 +54,8 @@ instructions_array = [
     {'type':'instruct' , 'dat':'Leg Raises. Laying down flat raise legs. Do it slowly, super slowly. '},
     {'type':'instruct' , 'dat':"Jumping Jacks. You son of a bitch.  I\'m in. "},
     {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Yeeeeeah Fuck Yeah yeah bomb diggity. '},
-    {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Ooh We. '}
+    {'type':'instruct' , 'dat':'Upper Body Hula Hoops. Rotate upper body spine strength. '},
+    {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}
 ]
 sounds_array = sounds_array + instructions_array
 
