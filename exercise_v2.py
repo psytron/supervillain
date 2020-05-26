@@ -3,17 +3,16 @@
 
 
 
+#                      __________________
+#                     /                 /
+#       ___STRENGTH  /     Super       /
+#     ___STRETCHES  /    Villain      /
+#__________________/________________ /
 
-##         SuperVillain 
-##        STRENGTH: 
-##      STRETCHES: 
-#################:
 import threading
 from core import gamecontroller
 from core import workprogram
 from core import keylistener
-
-
 
 b = threading.Thread( target=workprogram.run , daemon=True , args=( gamecontroller.exerciseEvent,) )
 f = threading.Thread( target=keylistener.run , daemon=True , args=( gamecontroller.completionEvent,) )
@@ -23,6 +22,11 @@ f.start()
 
 print('Starting Supervillain..')
 gamecontroller.run()
+
+
+
+
+
 
 
 
