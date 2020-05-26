@@ -10,19 +10,29 @@
 #################:
 import threading
 from core import gamecontroller
+from core import workprogram
+from core import keylistener
 
 
-def background():
-    from core import workprogram
-    workprogram.run( gamecontroller.exerciseEvent )
-def foreground():
-    from core import keylistener
-    keylistener.run( gamecontroller.completionEvent )
+#def background():
+#    workprogram.run( gamecontroller.exerciseEvent )
+#def foreground( arx ):
+#    keylistener.run( gamecontroller.completionEvent )
+#b = threading.Thread( target=background , daemon=True )
+#f = threading.Thread( target=foreground , daemon=True , args=(1,) )
 
-b = threading.Thread( target=background)
-f = threading.Thread( target=foreground)
+b = threading.Thread( 
+    target=workprogram.run , 
+    daemon=True , 
+    args=( gamecontroller.exerciseEvent,) )
+
+f = threading.Thread( 
+    target=keylistener.run , 
+    daemon=True , 
+    args=( gamecontroller.completionEvent,) )
 
 b.start()
 f.start()
-print('Started Supervillain..')
 
+print('Starting Supervillain..')
+gamecontroller.run()

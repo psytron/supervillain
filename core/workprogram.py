@@ -1,14 +1,14 @@
-from core import soundx
-import random
-import os
-import sys
+
+
+
+import random, sys, os, time, subprocess, glob
+from collections import defaultdict
 from os.path import isfile, join
+from datetime import datetime
+from core import soundx
 from os import listdir
 from colorama import Fore, Style
-import time
-from datetime import datetime
-from collections import defaultdict
-import subprocess, random
+
 
 ############################# CHECK ENV
 if getattr(sys, 'frozen', False):
@@ -26,7 +26,7 @@ print( '  sys.executable : ', sys.executable )
 print( '       os.getcwd : ', os.getcwd() )
 print( '                 : ')
 sound_dir = bundle_dir+'/sounds/'
-sound_dir = os.path.join( bundle_dir ,'sounds')
+#sound_dir = os.path.join( bundle_dir ,'sounds')
 
 
 ################# PLAY SOUND
@@ -42,7 +42,11 @@ mypath='sounds'
 start_time=time.time()
 start_date=datetime.now()
 played_hash = defaultdict(int)
-sounds_array  =[ {'type':'sound','dat':f} for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
+#sounds_array =[ {'type':'sound','dat':f} for f in listdir(sound_dir) if isfile(join(sound_dir, f))]
+sounds_array = [ {'type':'sound','dat':f} for f in glob.glob( sound_dir+"/*.wav") ]
+possible_sounds_max_index = len( sounds_array )-1
+
+
 instructions_array = [  
     {'type':'instruct' , 'dat':'Cherrie Pickers.. Do it now. '},
     {'type':'instruct' , 'dat':'Regular Lunges. It looks easy, but you can really feel it.'},
@@ -52,7 +56,7 @@ instructions_array = [
     {'type':'instruct' , 'dat':'Sit-ups. Basic Bitch Sit-ups. Do it. Strong Abs.'},
     {'type':'instruct' , 'dat':'Side Leg Raises. Buns Effect. Iron Buns. '},
     {'type':'instruct' , 'dat':'Leg Raises. Laying down flat raise legs. Do it slowly, super slowly. '},
-    {'type':'instruct' , 'dat':"Jumping Jacks. You son of a bitch.  I\'m in. "},
+    {'type':'instruct' , 'dat':'Jumping Jacks. You son of a bitch.  I\'m in. '},
     {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Yeeeeeah Fuck Yeah yeah bomb diggity. '},
     {'type':'instruct' , 'dat':'Upper Body Hula Hoops. Rotate upper body spine strength. '},
     {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}]
@@ -62,7 +66,7 @@ def run( callback_in ):
     global total_points
     # EVENT LOOP 
     while True:
-        random_delay = random.randint(5,8)
+        random_delay = random.randint(15,30)
         random_sound = random.randint(0, len(sounds_array)-1)
         obj = sounds_array[random_sound]
         callback_in( {'name':'exercise challange triggered'} )
@@ -79,6 +83,22 @@ def run( callback_in ):
         print( Fore.RED + ' RoboCoach '+' TOTAL POINTS: '+str(total_points),' SINCE: ',start_date )    
         print( Style.RESET_ALL )
         time.sleep(random_delay)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         # HERE IT SHOULD WAIT FOR INPUT OR READ THE BUTTON 
         # TO CONFIRM THE SCORE, OR AT LEASE STOP THE CLOCK 
