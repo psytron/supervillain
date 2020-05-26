@@ -9,18 +9,17 @@
 #     ___STRETCHES  /    Villain      /
 #__________________/________________ /
 
-import threading
+from threading import Thread
 from core import gamecontroller
 from core import workprogram
 from core import keylistener
 
-b = threading.Thread( target=workprogram.run , daemon=True , args=( gamecontroller.exerciseEvent,) )
-f = threading.Thread( target=keylistener.run , daemon=True , args=( gamecontroller.completionEvent,) )
+b = Thread( target=workprogram.run , daemon=True , args=( gamecontroller.exerciseEvent,) )
+f = Thread( target=keylistener.run , daemon=True , args=( gamecontroller.completionEvent,) )
 
 b.start()
 f.start()
 
-print('Starting Supervillain..')
 gamecontroller.run()
 
 

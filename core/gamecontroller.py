@@ -18,6 +18,7 @@ def playRandomCompletionSound():
 import time
 
 def run():
+    print('Starting Supervillain..')
     while game_on == True:
         time.sleep(1)
         pass
