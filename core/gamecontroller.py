@@ -15,11 +15,14 @@ possible_sounds_max_index = len(success_sound_arr)-1
 def playRandomCompletionSound():
     soundx.play( success_sound_arr[ random.randint(0,possible_sounds_max_index ) ])    
 
-
+import time
 
 def run():
     while game_on == True:
+        time.sleep(1)
         pass
+        
+    
 
 
 def showGameState():
