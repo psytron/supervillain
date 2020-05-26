@@ -1,8 +1,10 @@
 
-import sys, glob, random
+import sys, glob, random, time
+from datetime import datetime
 from colorama import Fore, Style
-from core import soundx
-from core import audiorender
+from collections import defaultdict
+from core import soundx, audiorender, soundboard
+
 
 
 game_on = True
@@ -10,12 +12,8 @@ player_score = 0
 villain_score = 0
 
 
-success_sound_arr =glob.glob("sounds/success/*.wav")
-possible_sounds_max_index = len(success_sound_arr)-1
-def playRandomCompletionSound():
-    soundx.play( success_sound_arr[ random.randint(0,possible_sounds_max_index ) ])    
 
-import time
+
 
 def run():
     print('Starting Supervillain..')
@@ -24,6 +22,8 @@ def run():
         pass
         
     
+
+
 
 
 def showGameState():
@@ -35,16 +35,37 @@ def showGameState():
 
     if player_score + 5000 < villain_score :
         print(' GAME OVER You Lost, You are not the SuperVillain. ')
+        soundboard.loss()
         game_on = False
+    
+    if player_score > villain_score + 5000 :
+        print(' You are the SuperVillain. ')
+        soundboard.win()
+        game_on = False        
 
 
-def exerciseEvent( e ):
+def taskEvent( e ):
     global villain_score
     villain_score += 1000
+    print( e )
     showGameState()
 
 def completionEvent( e ):
     global player_score
     player_score += 1000
     showGameState()
-    playRandomCompletionSound()
+    soundboard.completion()
+
+
+start_time=time.time()
+start_date=datetime.now()
+played_hash = defaultdict(int)
+
+
+def totalsupdate( obj ):
+    played_hash[ obj['dat'] ] += 1000
+    for k,v in played_hash.items():
+        print(str(Fore.BLUE)+str(k)+'   '+str(v))
+    print( Fore.RED + ' RoboCoach '+' TOTAL POINTS: SINCE: ',start_date )    
+    print( Style.RESET_ALL )
+    #time.sleep(random_delay)

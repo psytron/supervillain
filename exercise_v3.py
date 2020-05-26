@@ -10,13 +10,15 @@
 #__________________/________________ /
 
 from threading import Thread
-from core import gamecontroller, workprogram, keylistener
+from core import gamecontroller, workprogram, keylistener, taskemitter
 
-w = Thread( target=workprogram.run , daemon=True , args=( gamecontroller.exerciseEvent,) )
+w = Thread( target=workprogram.run , daemon=True , args=( gamecontroller.taskEvent,) )
 k = Thread( target=keylistener.run , daemon=True , args=( gamecontroller.completionEvent,) )
+t = Thread( target=taskemitter.run , daemon=True , args=( gamecontroller.taskEvent,) )
 
 w.start()
 k.start()
+t.start()
 gamecontroller.run()
 
 
