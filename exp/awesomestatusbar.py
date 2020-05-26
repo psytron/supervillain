@@ -14,4 +14,4 @@ class AwesomeStatusBarApp(rumps.App):
         rumps.notification("Awesome title", "amazing subtitle", "hi!!1")
 
 if __name__ == "__main__":
-    AwesomeStatusBarApp("Awesome App").run()
+    AwesomeStatusBarApp("SV").run()
