@@ -58,28 +58,30 @@ instructions_array = [
     {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}]
 sounds_array = sounds_array + instructions_array
 
+def run( callback_in ):
+    global total_points
+    # EVENT LOOP 
+    while True:
+        random_delay = random.randint(5,8)
+        random_sound = random.randint(0, len(sounds_array)-1)
+        obj = sounds_array[random_sound]
+        callback_in( {'name':'exercise challange triggered'} )
+        
+        if obj['type']=='sound':
+            playSound( obj['dat'] )
+        else:
+            os.system('say '+ obj['dat']  )
 
-# EVENT LOOP 
-while True:
-    random_delay = random.randint(1,3)
-    random_sound = random.randint(0, len(sounds_array)-1)
-    obj = sounds_array[random_sound]
-    
-    if obj['type']=='sound':
-        playSound( obj['dat'] )
-    else:
-        os.system('say '+ obj['dat']  )
+        played_hash[ obj['dat'] ] += 1000
+        total_points=total_points + 1000    
+        for k,v in played_hash.items():
+            print(str(Fore.BLUE)+str(k)+'   '+str(v))
+        print( Fore.RED + ' RoboCoach '+' TOTAL POINTS: '+str(total_points),' SINCE: ',start_date )    
+        print( Style.RESET_ALL )
+        time.sleep(random_delay)
 
-    played_hash[ obj['dat'] ] += 1000
-    total_points=total_points + 1000    
-    for k,v in played_hash.items():
-        print(str(Fore.BLUE)+str(k)+'   '+str(v))
-    print( Fore.RED + ' RoboCoach '+' TOTAL POINTS: '+str(total_points),' SINCE: ',start_date )    
-    print( Style.RESET_ALL )
-    time.sleep(random_delay)
-
-    # HERE IT SHOULD WAIT FOR INPUT OR READ THE BUTTON 
-    # TO CONFIRM THE SCORE, OR AT LEASE STOP THE CLOCK 
-    # COMMAND LINE ARG SEEMS WAY TO TEDIUMS, SHOULD BE
-    # EASY AND FAST. FASTEST WAY TO USB BUTTON FOR MAC 
-    # and WINDOWS ?
+        # HERE IT SHOULD WAIT FOR INPUT OR READ THE BUTTON 
+        # TO CONFIRM THE SCORE, OR AT LEASE STOP THE CLOCK 
+        # COMMAND LINE ARG SEEMS WAY TO TEDIUMS, SHOULD BE
+        # EASY AND FAST. FASTEST WAY TO USB BUTTON FOR MAC 
+        # and WINDOWS ?
