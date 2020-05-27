@@ -17,7 +17,7 @@ def loss():
 def win():
     soundx.play( win_sounds[ random.randint(0,len(win_sounds)-1 ) ])  
 
-def taskevent( obj ):
+def task( obj ):
     print( obj )
     # inspect obj 
     # play specific sound or ROBO READ 

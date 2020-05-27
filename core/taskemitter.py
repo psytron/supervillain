@@ -6,6 +6,7 @@ from core import audiorender
 
 # INTERIM CONFIG
 file_array = audiorender.getsoundslist()
+print( ' found file array: ', file_array )
 sounds_array = [ {'type':'sound','dat':f} for f in file_array ]
 possible_sounds_max_index = len( sounds_array )-1
 
@@ -24,6 +25,11 @@ instructions_array = [
     {'type':'instruct' , 'dat':'Upper Body Hula Hoops. Rotate upper body spine strength. '},
     {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}]
 sounds_array = sounds_array + instructions_array
+
+print( 'running program with all tasks: ')
+print( sounds_array )
+for s in sounds_array:
+    print( s )
 
 def run( callback_in ):
     # EVENT LOOP 
