@@ -24,7 +24,7 @@ task_array = task_array+ [
 def run( callback_in ):
     # EVENT LOOP 
     while True:
-        random_delay = random.randint(1,2)
+        random_delay = random.randint(90,180)
         random_sound = random.randint(0, len(task_array)-1)
         obj = task_array[random_sound]
         callback_in( obj )

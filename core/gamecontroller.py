@@ -6,7 +6,7 @@ import sys, glob, random, time
 from datetime import datetime
 from colorama import Fore, Style
 from collections import defaultdict
-from core import soundx, audiorender, soundboard
+from core import soundboard
 
 
 game_on = True
@@ -19,8 +19,6 @@ def run():
         time.sleep(1)
         pass
         
-    
-
 
 def updateGameState( eObj ):
     global game_on
@@ -46,7 +44,6 @@ def taskEvent( e ):
     updateGameState( e )
     soundboard.task( e )
 
-
 def completionEvent( e ):
     global player_score
     player_score += 1000
@@ -61,11 +58,12 @@ def completionEvent( e ):
 
 
 
+
+
+
 start_time=time.time()
 start_date=datetime.now()
 played_hash = defaultdict(int)
-
-
 def totalsupdate( obj ):
     played_hash[ obj['dat'] ] += 1000
     for k,v in played_hash.items():
