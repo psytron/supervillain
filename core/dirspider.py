@@ -4,7 +4,7 @@ import glob, sys, os
 
 
 
-###################### CHECK ENV
+#CHECK ENV
 if getattr(sys, 'frozen', False):
     bundle_dir = sys._MEIPASS # IN BUNDLE
 else:

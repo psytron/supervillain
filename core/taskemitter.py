@@ -2,9 +2,9 @@
 
 
 import random, time
-from core import audiorender, dirspider
+from core import dirspider
 
-# INTERIM CONFIG
+#/// INTERIM CONFIG ///
 task_array = [ {'type':'sound','dat':f} for f in dirspider.getSounds('task') ]
 task_array = task_array+ [  
     {'type':'instruct' , 'dat':'Cherrie Pickers.. Do it now. '},
@@ -20,9 +20,6 @@ task_array = task_array+ [
     {'type':'instruct' , 'dat':'Upper Body Hula Hoops. Rotate upper body spine strength. '},
     {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}]
 
-
-for s in task_array:
-    print( s )
 
 def run( callback_in ):
     # EVENT LOOP 

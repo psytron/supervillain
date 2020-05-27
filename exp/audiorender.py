@@ -10,8 +10,6 @@ def playSound( sound_in ):
     print( ' calling afplay with: ', sound_path )
     subprocess.call(["afplay", sound_path])
 
-
-
 ############################# CHECK ENV
 if getattr(sys, 'frozen', False):
     bundle_dir = sys._MEIPASS # IN BUNDLE

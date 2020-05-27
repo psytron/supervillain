@@ -10,7 +10,7 @@
 #__________________/________________ /
 
 from threading import Thread
-from core import gamecontroller, workprogram, keylistener, taskemitter
+from core import gamecontroller, keylistener, taskemitter
 
 k = Thread( target=keylistener.run , daemon=True , args=( gamecontroller.completionEvent,) )
 t = Thread( target=taskemitter.run , daemon=True , args=( gamecontroller.taskEvent,) )

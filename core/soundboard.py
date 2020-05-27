@@ -1,25 +1,20 @@
 
 
-
-from core import soundx
-import glob, random
-import sys, os
-import subprocess
+#/// FIND SOUNDS ///
+import glob, random, sys, os, subprocess
 from core import dirspider
-
 
 base = dirspider.getBase()
 completion_sounds = dirspider.getSounds('completion') 
 loss_sounds = dirspider.getSounds('loss') 
 win_sounds = dirspider.getSounds('win') 
 
-
-
 def play( sound_in ):
     print( 'Playing: ',sound_in )
     subprocess.Popen(["afplay", sound_in]) # non blocks
 
 
+#/// SOUND EVENTS ///
 def completion():
     play( completion_sounds[ random.randint(0,len(completion_sounds)-1 ) ])    
 

@@ -5,7 +5,6 @@ import random, sys, os, time, subprocess, glob
 from collections import defaultdict
 from os.path import isfile, join
 from datetime import datetime
-from core import soundx
 from os import listdir
 from colorama import Fore, Style
 
