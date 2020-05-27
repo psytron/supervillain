@@ -2,16 +2,11 @@
 
 
 import random, time
-from core import audiorender
+from core import audiorender, dirspider
 
 # INTERIM CONFIG
-file_array = audiorender.getsoundslist()
-print( ' found file array: ', file_array )
-sounds_array = [ {'type':'sound','dat':f} for f in file_array ]
-possible_sounds_max_index = len( sounds_array )-1
-
-# ROBO CONFIG 
-instructions_array = [  
+task_array = [ {'type':'sound','dat':f} for f in dirspider.getSounds('task') ]
+task_array = task_array+ [  
     {'type':'instruct' , 'dat':'Cherrie Pickers.. Do it now. '},
     {'type':'instruct' , 'dat':'Regular Lunges. It looks easy, but you can really feel it.'},
     {'type':'instruct' , 'dat':'Arnold Schwartzenegger. Arnold Shwartzenegger yo. Do it.'},
@@ -24,26 +19,19 @@ instructions_array = [
     {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Yeeeeeah Fuck Yeah yeah bomb diggity. '},
     {'type':'instruct' , 'dat':'Upper Body Hula Hoops. Rotate upper body spine strength. '},
     {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}]
-sounds_array = sounds_array + instructions_array
 
-print( 'running program with all tasks: ')
-print( sounds_array )
-for s in sounds_array:
+
+for s in task_array:
     print( s )
 
 def run( callback_in ):
     # EVENT LOOP 
     while True:
         random_delay = random.randint(1,2)
-        random_sound = random.randint(0, len(sounds_array)-1)
-        obj = sounds_array[random_sound]
+        random_sound = random.randint(0, len(task_array)-1)
+        obj = task_array[random_sound]
         callback_in( obj )
         time.sleep( random_delay )
-        #if obj['type']=='sound':
-        #    playSound( obj['dat'] )
-        #else:
-        #    os.system('say '+ obj['dat']  )
-
 
 
 

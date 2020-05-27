@@ -15,7 +15,6 @@ villain_score = 0
 
 
 def run():
-    print('Starting Supervillain..')
     while game_on == True:
         time.sleep(1)
         pass
@@ -25,7 +24,7 @@ def run():
 
 def updateGameState( eObj ):
     global game_on
-    print('     Game is on: ')
+    print('      Game is on: ')
     print( Fore.BLUE,'   Player Score: ', Fore.WHITE, player_score )
     print( Fore.BLUE,'  Villain Score: ', Fore.WHITE, villain_score )
     print( Fore.RESET )
@@ -44,9 +43,9 @@ def updateGameState( eObj ):
 def taskEvent( e ):
     global villain_score
     villain_score += 1000
-    print( e )
     updateGameState( e )
     soundboard.task( e )
+
 
 def completionEvent( e ):
     global player_score

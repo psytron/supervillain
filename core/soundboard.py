@@ -1,23 +1,43 @@
 
+
+
 from core import soundx
 import glob, random
+import sys, os
+import subprocess
+from core import dirspider
 
-success_sound_arr =glob.glob("sounds/success/*.wav")
-completion_sounds = glob.glob("sounds/success/*.wav")
-loss_sounds = glob.glob("sounds/loss/*.wav")
-win_sounds = glob.glob("sounds/win/*.wav")
 
-possible_sounds_max_index = len(success_sound_arr)-1
+base = dirspider.getBase()
+completion_sounds = dirspider.getSounds('completion') 
+loss_sounds = dirspider.getSounds('loss') 
+win_sounds = dirspider.getSounds('win') 
+
+
+
+def play( sound_in ):
+    print( 'Playing: ',sound_in )
+    subprocess.Popen(["afplay", sound_in]) # non blocks
+
+
 def completion():
-    soundx.play( completion_sounds[ random.randint(0,len(completion_sounds)-1 ) ])    
+    play( completion_sounds[ random.randint(0,len(completion_sounds)-1 ) ])    
 
 def loss():
-    soundx.play( loss_sounds[ random.randint(0,len(loss_sounds)-1 ) ])    
+    play( loss_sounds[ random.randint(0,len(loss_sounds)-1 ) ])    
 
 def win():
-    soundx.play( win_sounds[ random.randint(0,len(win_sounds)-1 ) ])  
+    play( win_sounds[ random.randint(0,len(win_sounds)-1 ) ])  
 
 def task( obj ):
-    print( obj )
-    # inspect obj 
-    # play specific sound or ROBO READ 
+    if obj['type']=='sound':
+        play( obj['dat'] )
+    else:
+        os.system('say '+ obj['dat']  )
+
+
+
+
+
+
+
