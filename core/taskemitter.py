@@ -8,15 +8,17 @@ from core import dirspider
 task_array = [ {'type':'sound','dat':f} for f in dirspider.getSounds('task') ]
 task_array = task_array+ [  
     {'type':'instruct' , 'dat':'Cherrie Pickers.. Do it now. '},
-    {'type':'instruct' , 'dat':'Regular Lunges. It looks easy, but you can really feel it.'},
-    {'type':'instruct' , 'dat':'Arnold Schwartzenegger. Arnold Shwartzenegger yo. Do it.'},
-    {'type':'instruct' , 'dat':'Backbend backwards bridge. Make it happen strength for your back.'},
-    {'type':'instruct' , 'dat':'Calf Raises 15. Do 15 Calf Raises.'},
-    {'type':'instruct' , 'dat':'Sit-ups. Basic Bitch Sit-ups. Do it. Strong Abs.'},
-    {'type':'instruct' , 'dat':'Side Leg Raises. Buns Effect. Iron Buns. '},
+    {'type':'instruct' , 'dat':'Elastic Spear Diver Forward Bubbles.'},
+    {'type':'instruct' , 'dat':'24 Spring Loaded One Leg Power Push-Ups.'},
+    {'type':'instruct' , 'dat':'Regular Lunges. 12X.'},
+    {'type':'instruct' , 'dat':'Arnold Schwartzenegger 10 seconds.'},
+    {'type':'instruct' , 'dat':'Backbend backwards bridge. Variety. '},
+    {'type':'instruct' , 'dat':'Calf Raises 15. Do 15.'},
+    {'type':'instruct' , 'dat':'Sit-ups. Basic Bitch Sit-ups.'},
+    {'type':'instruct' , 'dat':'Side Leg Raises. Easy.'},
     {'type':'instruct' , 'dat':'Leg Raises. Laying down flat raise legs. Do it slowly, super slowly. '},
-    {'type':'instruct' , 'dat':'Jumping Jacks. You son of a bitch.  I\'m in. '},
-    {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges....... Yeeeeeah Fuck Yeah yeah bomb diggity. '},
+    {'type':'instruct' , 'dat':'Jumping Jacks.'},
+    {'type':'instruct' , 'dat':'Mountain Climbers. Some people call this step through lunges. '},
     {'type':'instruct' , 'dat':'Upper Body Hula Hoops. Rotate upper body spine strength. '},
     {'type':'instruct' , 'dat':'Bobble Head Jumping Jacks '}]
 
